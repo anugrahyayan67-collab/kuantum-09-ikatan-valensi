@@ -43,8 +43,8 @@ export const Promotion: React.FC = () => {
   const idPulse = ramp(t, wordOf(4, 'identik') - 0.1, wordOf(4, 'identik') + 0.4);
 
   const yaw = 0.5 + t * 0.32;
-  const camCH4: Cam = {cx: 1560, cy: 470, s: 150, yaw, pitch: 0.32};
-  const camCH2: Cam = {cx: 1180, cy: 470, s: 130, yaw: -0.4 + 0.25 * Math.sin(t * 0.7), pitch: 0.25};
+  const camCH4: Cam = {cx: 1560, cy: 470, s: 150, yaw, pitch: -0.32};
+  const camCH2: Cam = {cx: 1180, cy: 470, s: 130, yaw: -0.4 + 0.25 * Math.sin(t * 0.7), pitch: -0.2};
   const ch2Atoms: V3[] = [
     [0, 0, 0],
     [-0.75, 0, -0.72],
@@ -57,8 +57,8 @@ export const Promotion: React.FC = () => {
 
   // orbital baris 4
   const ox = [300, 540, 780, 1020];
-  const camO = (k: number): Cam => ({cx: ox[k], cy: 470, s: 120, yaw: 0.6 + t * 0.3, pitch: 0.35});
-  const camM: Cam = {cx: 1520, cy: 480, s: 165, yaw: 0.3 + t * 0.3, pitch: 0.3};
+  const camO = (k: number): Cam => ({cx: ox[k], cy: 470, s: 105, yaw: 0.6 + t * 0.3, pitch: -0.35});
+  const camM: Cam = {cx: 1520, cy: 480, s: 165, yaw: 0.3 + t * 0.3, pitch: -0.3};
   const pDirs: V3[] = [
     [1, 0, 0],
     [0, 1, 0],
@@ -142,7 +142,7 @@ export const Promotion: React.FC = () => {
           </Label>
           {/* tingkat awal */}
           <line x1={1060} y1={560} x2={1200} y2={560} stroke={C.ink} strokeWidth={6} strokeLinecap="round" />
-          <Label x={1130} y={595} size={26} color={C.muted}>
+          <Label x={1130} y={530} size={26} color={C.muted}>
             awal
           </Label>
           {/* promosi (naik sedikit) */}
@@ -168,11 +168,11 @@ export const Promotion: React.FC = () => {
           </g>
           {/* hasil bersih */}
           <g opacity={win}>
-            <line x1={1200} y1={560} x2={1200} y2={800} stroke={C.gold} strokeWidth={3} strokeDasharray="8 8" />
-            <line x1={1200} y1={800} x2={1440} y2={800} stroke={C.gold} strokeWidth={2} strokeDasharray="6 6" />
-            <line x1={1160} y1={566} x2={1160} y2={792} stroke={C.gold} strokeWidth={6} markerEnd="url(#arrow-gold)" />
-            <Glow x={1100} y={690} r={120} color="gold" opacity={0.35 * (0.6 + 0.4 * pulse)} />
-            <Label x={1130} y={690} size={44} color={C.gold} weight={800} anchor="end">
+            <line x1={1060} y1={560} x2={1110} y2={560} stroke={C.gold} strokeWidth={2} strokeDasharray="6 6" />
+            <line x1={1110} y1={800} x2={1440} y2={800} stroke={C.gold} strokeWidth={2} strokeDasharray="6 6" />
+            <line x1={1110} y1={566} x2={1110} y2={792} stroke={C.gold} strokeWidth={6} markerEnd="url(#arrow-gold)" />
+            <Glow x={1040} y={690} r={120} color="gold" opacity={0.35 * (0.6 + 0.4 * pulse)} />
+            <Label x={1085} y={690} size={44} color={C.gold} weight={800} anchor="end">
               untung
             </Label>
           </g>
@@ -182,7 +182,7 @@ export const Promotion: React.FC = () => {
         <g opacity={r4}>
           <Render3D opacity={shapeIn[0]} items={[sphere(camO(0), {center: [0, 0, 0], r: 0.75, color: 'blue', opacity: 0.88})]} />
           {[1, 2, 3].map((k) => (
-            <Render3D key={k} opacity={shapeIn[k]} items={pOrb(camO(k), {origin: [0, 0, 0], dir: pDirs[k - 1], len: 1.25, wid: 0.5, opacity: 0.9})} />
+            <Render3D key={k} opacity={shapeIn[k]} items={pOrb(camO(k), {origin: [0, 0, 0], dir: pDirs[k - 1], len: 1.0, wid: 0.42, opacity: 0.9})} />
           ))}
           <SvgChem x={ox[0]} y={680} parts={[['2s']]} size={40} color={C.blue} opacity={shapeIn[0]} font="serif" />
           {['x', 'y', 'z'].map((ax, k) => (

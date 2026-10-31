@@ -48,7 +48,7 @@ export const Hook: React.FC = () => {
 
   // ---------- Lewis H–H ----------
   const lewisIn = ramp(t, cue(3) + 0.1, cue(3) + 1.0);
-  const lewisOut = 1 - ramp(t, cue(4) - 0.2, cue(4) + 0.8, EASE_IN_OUT);
+  const lewisOut = 1 - 0.45 * ramp(t, cue(4) - 0.2, cue(4) + 0.8, EASE_IN_OUT) - 0.55 * ramp(t, cue(5) - 0.4, cue(5) + 0.4, EASE_IN_OUT);
   const lewisUp = ramp(t, cue(4) - 0.2, cue(4) + 0.9, EASE_IN_OUT);
   const wH1 = ramp(t, wordOf(3, 'menggambar') - 0.3, wordOf(3, 'menggambar') + 0.9);
   const wH2 = ramp(t, wordOf(3, 'menggambar') + 0.2, wordOf(3, 'menggambar') + 1.3);
@@ -175,7 +175,7 @@ export const Hook: React.FC = () => {
         </g>
 
         {/* ===== Lewis H–H ===== */}
-        <g opacity={lewisIn * lewisOut} transform={`translate(0 ${-150 * lewisUp}) `}>
+        <g opacity={lewisIn * lewisOut} transform={`translate(960 ${430 - 160 * lewisUp}) scale(${1 - 0.3 * lewisUp}) translate(-960 -430)`}>
           <WriteText x={780} y={430} p={wH1} size={130} weight={600}>
             H
           </WriteText>
@@ -250,7 +250,7 @@ export const Hook: React.FC = () => {
         {/* ===== penutup: teori ikatan valensi ===== */}
         <g opacity={vbt}>
           <Glow x={960} y={yMol} r={300} color="gold" opacity={0.25 * hand * (0.8 + 0.2 * Math.sin(t * 2.4))} />
-          <rect x={960 - 380 * lineW} y={738} width={760 * lineW} height={2} fill={C.gold} opacity={0.7} />
+          <rect x={960 - 380 * lineW} y={768} width={760 * lineW} height={2} fill={C.gold} opacity={0.7} />
         </g>
       </Stage>
 
@@ -263,7 +263,7 @@ export const Hook: React.FC = () => {
       </Card>
 
       {/* kartu pertanyaan */}
-      <Card x={960} y={640} opacity={whyCard * lewisOut} scale={0.94 + 0.06 * whyCard} accent={C.gold}>
+      <Card x={960} y={640} opacity={whyCard * (1 - ramp(t, cue(4) - 0.3, cue(4) + 0.4, EASE_IN_OUT))} scale={0.94 + 0.06 * whyCard} accent={C.gold}>
         <div style={{fontSize: 40, fontWeight: 600, textAlign: 'center'}}>
           mengapa <span style={{color: C.cyan}}>berbagi elektron</span> <span style={{color: C.mint}}>menurunkan energi</span>?
         </div>
@@ -281,7 +281,7 @@ export const Hook: React.FC = () => {
         }}
       >
         <div style={{fontFamily: FONT.sans, fontWeight: 800, fontSize: 76, color: C.gold, letterSpacing: 3, textShadow: '0 0 40px rgba(255,194,74,0.4)'}}>TEORI IKATAN VALENSI</div>
-        <div style={{fontFamily: FONT.sans, fontSize: 34, color: C.ink, marginTop: 30, opacity: hand}}>
+        <div style={{fontFamily: FONT.sans, fontSize: 34, color: C.ink, marginTop: 44, opacity: hand}}>
           jabat tangan <span style={{color: C.cyan}}>dua</span> <span style={{color: C.pink}}>elektron</span>
         </div>
       </div>

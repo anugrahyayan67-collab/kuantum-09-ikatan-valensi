@@ -201,14 +201,11 @@ export const Carbon: React.FC = () => {
             <Sheet key={L} cx={PX[1] + (L === 1 ? 18 : 0)} cy={410 + L * 110} s={46} t={t} shift={L === 0 ? shiftTop : 0} pi={sea} flow={L === 0 ? flow : 0} seed={L} opacity={L === 0 ? 1 : 0.75} atomR={4.5} />
           ))}
           <path d={`M${PX[1] - 230},${360} L${PX[1] - 230},${600}`} stroke={C.muted} strokeWidth={2} strokeDasharray="4 6" opacity={0.6 * sea} />
-          <Label x={PX[1] - 212} y={480} size={22} anchor="start" color={C.muted} opacity={0.0}>
-            {' '}
-          </Label>
         </g>
         <Label x={PX[1]} y={740} size={28} color={C.ink} opacity={cond}>
           menghantar listrik
         </Label>
-        <Label x={PX[1]} y={782} size={24} color={C.amber} opacity={sea * (1 - cond) + cond * 0.0}>
+        <Label x={PX[1]} y={782} size={24} color={C.amber} opacity={sea * (1 - slide)}>
           lautan elektron π
         </Label>
         <Label x={PX[1]} y={782} size={24} color={C.muted} opacity={slide}>

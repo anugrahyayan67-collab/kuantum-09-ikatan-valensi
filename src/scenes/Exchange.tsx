@@ -195,7 +195,6 @@ export const Exchange: React.FC = () => {
           <path d={`${poly(gain)} ${back(ref)} Z`} fill={C.cyan} opacity={0.35 * refOp * grow} />
           <path d={`${poly(ref)} ${back(loss)} Z`} fill={C.red} opacity={0.3 * refOp * grow} />
           <path d={poly(ref)} fill="none" stroke={C.muted} strokeWidth={3} strokeDasharray="8 8" opacity={refOp} />
-          <path d={poly(fv)} fill="none" stroke={mix(0, 1, m) > 0.5 ? C.red : C.cyan} strokeOpacity={0} />
           <path d={poly(fv)} fill="none" stroke={C.cyan} strokeWidth={5} opacity={1 - m} />
           <path d={poly(fv)} fill="none" stroke={C.red} strokeWidth={5} opacity={m} />
           {[NA, NB].map((x, k) => (

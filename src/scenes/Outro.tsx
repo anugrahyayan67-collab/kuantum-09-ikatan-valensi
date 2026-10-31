@@ -1,9 +1,8 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
-import {EASE_IN_OUT, rand, ramp} from '../anim';
-import {Glow, Stage} from '../components/primitives';
-import {SpectrumDefs} from '../components/grupD';
-import {wlColor} from '../components/viz';
+import {EASE_IN_OUT, cyc, rand, ramp} from '../anim';
+import {Atom, Glow, Stage} from '../components/primitives';
+import {HexIcon, POrb} from '../components/vbD';
 import {useScene} from '../SceneContext';
 import {C, FONT} from '../theme';
 
@@ -32,24 +31,42 @@ export const Outro: React.FC = () => {
     <AbsoluteFill style={{opacity: out}}>
       <Stage>
         <Glow x={960} y={300} r={500} color="violet" opacity={0.15} />
-        <SpectrumDefs id="outro-spec" />
-        {/* hiasan: pita spektrum tipis dengan dua garis kuning natrium yang berdenyut */}
+        {/* hiasan: dua atom H berjabat tangan + molekul/orbital melayang */}
         <g opacity={waves}>
-          <rect x={360} y={96} width={1200} height={14} rx={7} fill="url(#outro-spec)" opacity={0.35} />
-          {[588.995, 589.592].map((nm, k) => {
-            const x = 360 + ((nm - 380) / 380) * 1200 + (k ? 9 : -9);
-            const pulse = 0.75 + 0.25 * Math.sin(t * 2.2 + k * 1.3);
+          {(() => {
+            const d = 46 + 4 * Math.sin(t * 1.6);
+            const pulse = 0.5 + 0.5 * Math.sin(t * 1.6 + Math.PI);
             return (
-              <g key={nm}>
-                <circle cx={x} cy={103} r={46} fill="url(#soft-gold)" opacity={0.35 * pulse} />
-                <rect x={x - 3} y={70} width={6} height={66} rx={3} fill={wlColor(589)} opacity={pulse} />
-                <rect x={x - 1} y={74} width={2} height={58} rx={1} fill="#fff6c0" opacity={pulse} />
+              <g>
+                <ellipse cx={960} cy={92} rx={d + 40} ry={30} fill={C.cyan} opacity={0.12 + 0.08 * pulse} />
+                <ellipse cx={960} cy={92} rx={d * 0.6} ry={18} fill={C.cyan} opacity={0.25 + 0.15 * pulse} />
+                <Atom x={960 - d} y={92} el="H" r={20} label={null} glow={0.5} />
+                <Atom x={960 + d} y={92} el="H" r={20} label={null} glow={0.5} />
+                {[0, 1].map((k) => (
+                  <circle key={k} cx={960 + 22 * Math.cos(t * 2 + k * Math.PI)} cy={92 + 9 * Math.sin(t * 2 + k * Math.PI)} r={4.5} fill={C.cyan} />
+                ))}
               </g>
             );
-          })}
-          {Array.from({length: 26}, (_, k) => {
-            const ph = ((t * (0.05 + 0.04 * rand(k)) + rand(k * 3.1)) % 1 + 1) % 1;
-            return <circle key={k} cx={120 + rand(k * 7.3) * 1680} cy={1040 - ph * 1000} r={1.5 + 2 * rand(k * 1.7)} fill={wlColor(589)} opacity={0.35 * Math.min(1, ph * 6) * (1 - ph)} />;
+          })()}
+          {Array.from({length: 14}, (_, k) => {
+            const ph = ((t * (0.035 + 0.02 * rand(k)) + rand(k * 3.1)) % 1 + 1) % 1;
+            const side = k % 2 ? 1 : -1;
+            const x = 960 + side * (720 + 120 * rand(k * 7.3)) + 30 * Math.sin(t * 0.5 + k);
+            const y = 1000 - ph * 920;
+            const op = 0.3 * cyc(ph);
+            const kind = k % 3;
+            const rot = t * 20 * (rand(k * 2.2) - 0.5);
+            return (
+              <g key={k} opacity={op} transform={`rotate(${rot} ${x} ${y})`}>
+                {kind === 0 ? <HexIcon x={x} y={y} r={30} mode="ring" width={3} /> : kind === 1 ? <POrb x={x} y={y} L={34} w={12} ang={rand(k) * 60 - 30} /> : (
+                  <g>
+                    <line x1={x - 22} y1={y} x2={x + 22} y2={y} stroke="#8b97b8" strokeWidth={5} />
+                    <circle cx={x - 22} cy={y} r={12} fill="#ff4d63" />
+                    <circle cx={x + 22} cy={y} r={12} fill="#ff4d63" />
+                  </g>
+                )}
+              </g>
+            );
           })}
         </g>
       </Stage>
