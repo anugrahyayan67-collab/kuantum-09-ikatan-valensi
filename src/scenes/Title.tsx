@@ -1,8 +1,8 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
-import {EASE_IN_OUT, rand, ramp} from '../anim';
+import {EASE_IN_OUT, mix, rand, ramp} from '../anim';
 import {Glow, Stage} from '../components/primitives';
-import {NA_YELLOW} from '../components/grupA';
+import {H2Pair, VbDefs} from '../components/vbA';
 import {useScene} from '../SceneContext';
 import {C, FONT} from '../theme';
 
@@ -19,18 +19,54 @@ const Letters: React.FC<{text: string; t: number; start: number; step: number; s
   </div>
 );
 
-// Simbol term yang melayang samar di latar: [multiplisitas, huruf L, J].
-const TERMS: [string, string, string][] = [
-  ['2', 'S', '1/2'],
-  ['3', 'P', '0'],
-  ['6', 'S', '5/2'],
-  ['4', 'F', '3/2'],
-  ['5', 'D', '4'],
-  ['1', 'S', '0'],
-  ['2', 'P', '3/2'],
-  ['3', 'F', '2'],
-  ['7', 'S', '3'],
-  ['4', 'I', '9/2'],
+// Rumus & simbol ikatan yang melayang samar di latar.
+const sub = (s: number, v: string, col?: string) => (
+  <tspan fontSize={s * 0.6} baselineShift="sub" fill={col}>
+    {v}
+  </tspan>
+);
+const sup = (s: number, v: string, col?: string) => (
+  <tspan fontSize={s * 0.6} baselineShift="super" fill={col}>
+    {v}
+  </tspan>
+);
+const FLOATS: ((s: number) => React.ReactNode)[] = [
+  (s) => (
+    <>
+      <tspan fill={C.mint}>sp</tspan>
+      {sup(s, '3', C.mint)}
+    </>
+  ),
+  (s) => <tspan fill={C.cyan}>σ</tspan>,
+  (s) => (
+    <>
+      <tspan fill={C.ink}>H</tspan>
+      {sub(s, '2')}
+    </>
+  ),
+  () => <tspan fill={C.amber}>π</tspan>,
+  () => <tspan fill={C.gold}>74 pm</tspan>,
+  (s) => (
+    <>
+      <tspan fill={C.mint}>sp</tspan>
+      {sup(s, '2', C.mint)}
+    </>
+  ),
+  () => <tspan fill={C.violet}>ψ = a(1)b(2) + b(1)a(2)</tspan>,
+  () => <tspan fill={C.mint}>109,5°</tspan>,
+  () => (
+    <>
+      <tspan fill={C.cyan}>↑</tspan>
+      <tspan fill={C.pink}>↓</tspan>
+    </>
+  ),
+  (s) => (
+    <>
+      <tspan fill={C.red}>D</tspan>
+      {sub(s, 'e', C.red)}
+      <tspan fill={C.red}> ≈ 4,75 eV</tspan>
+    </>
+  ),
 ];
 
 export const Title: React.FC = () => {
@@ -38,32 +74,26 @@ export const Title: React.FC = () => {
   const bg = ramp(t, 0.1, 2.0, EASE_IN_OUT);
   const sub = ramp(t, 2.6, 3.6);
   const line = ramp(t, 1.8, 3.2, EASE_IN_OUT);
-  const pulse = 0.8 + 0.2 * Math.sin(t * 2.4);
+  const meet = ramp(t, 0.2, 4.0, EASE_IN_OUT);
+  const flashP = ramp(t, 3.6, 5.2);
   return (
     <AbsoluteFill>
       <Stage>
+        <VbDefs />
         <Glow x={960} y={470} r={640} color="gold" opacity={0.12 * bg} />
-        {/* dua garis kuning natrium samar di belakang judul */}
-        {[-34, 34].map((dx, k) => (
-          <g key={k} opacity={bg * 0.35 * pulse}>
-            <rect x={960 + dx - 18} y={120} width={36} height={760} fill={NA_YELLOW} opacity={0.12} rx={18} />
-            <rect x={960 + dx - 3} y={120} width={6} height={760} fill={NA_YELLOW} opacity={0.6} rx={3} />
-          </g>
-        ))}
-        {TERMS.map(([m, L, J], i) => {
+        {/* dua atom H yang mendekat di belakang judul, awannya menyatu */}
+        <g opacity={0.5 * bg}>
+          <H2Pair x1={mix(330, 885, meet)} x2={mix(1590, 1035, meet)} y={470} t={t} R={150} merge={ramp(t, 3.4, 4.6)} />
+        </g>
+        <circle cx={960} cy={470} r={420 * flashP + 80} fill="url(#vbA-flash)" opacity={0.35 * Math.max(0, 1 - Math.abs(t - 4.0) / 1.2) * bg} />
+        {FLOATS.map((f, i) => {
           const x = 140 + ((rand(i * 3.3) * 1640 + t * (14 + rand(i) * 18)) % 1640);
           const y = 150 + rand(i * 5.1 + 2) * 680;
           const edge = Math.min(1, (x - 140) / 120, (1780 - x) / 120);
-          const s = 44 + rand(i * 7.7) * 30;
+          const s = 40 + rand(i * 7.7) * 26;
           return (
-            <text key={i} x={x} y={y} fontFamily={FONT.serif} fontSize={s} fill={C.ink} opacity={0.13 * bg * Math.max(0, edge)} textAnchor="middle">
-              <tspan fontSize={s * 0.6} baselineShift="super" fill={C.violet}>
-                {m}
-              </tspan>
-              <tspan fill={C.gold}>{L}</tspan>
-              <tspan fontSize={s * 0.55} baselineShift="sub" fill={C.mint}>
-                {J}
-              </tspan>
+            <text key={i} x={x} y={y} fontFamily={FONT.serif} fontSize={s} fill={C.ink} opacity={0.16 * bg * Math.max(0, edge)} textAnchor="middle">
+              {f(s)}
             </text>
           );
         })}
