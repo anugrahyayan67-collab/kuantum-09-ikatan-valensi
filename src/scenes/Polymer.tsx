@@ -217,10 +217,10 @@ export const Polymer: React.FC = () => {
         </g>
 
         {/* iodin dopan */}
-        {[2.5, 5, 7.5, 9.6].map((s, k) => {
+        {[1.5, 3.6, 7.0, 9.4].map((s, k) => {
           const p = ramp(t, tI - 0.3 + k * 0.25, tI + 0.6 + k * 0.25, BACK);
           const x = X0 + s * DX + 12 * Math.sin(t * 1.1 + k);
-          const y = mix(440, 478, p) + 4 * Math.sin(t * 1.7 + k * 2);
+          const y = mix(705, 745, p) + 4 * Math.sin(t * 1.7 + k * 2);
           return (
             <g key={k} opacity={Math.min(1, p * 1.5)}>
               <circle cx={x} cy={y} r={44} fill="url(#soft-violet)" opacity={0.5} />
@@ -228,7 +228,7 @@ export const Polymer: React.FC = () => {
             </g>
           );
         })}
-        <Label x={X0 + 10.3 * DX} y={478} size={28} anchor="start" color={C.violet} opacity={dope} weight={600}>
+        <Label x={X0 + 10.3 * DX} y={745} size={28} anchor="start" color={C.violet} opacity={dope} weight={600}>
           + iodin
         </Label>
 

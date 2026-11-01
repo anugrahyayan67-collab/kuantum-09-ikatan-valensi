@@ -22,16 +22,17 @@ const DIAMOND = (() => {
     [0.5, 0.5, 0],
   ];
   const pts: [number, number, number][] = [];
-  for (let i = -1; i <= 1; i++)
-    for (let j = -1; j <= 1; j++)
-      for (let k = -1; k <= 1; k++)
+  const R = 0.9;
+  for (let i = -2; i <= 2; i++)
+    for (let j = -2; j <= 2; j++)
+      for (let k = -2; k <= 2; k++)
         for (const b of base)
           for (const off of [0, 0.25]) {
             const p: [number, number, number] = [b[0] + i + off, b[1] + j + off, b[2] + k + off];
-            if (p.every((v) => v >= -0.01 && v <= 1.01)) pts.push(p);
+            if (Math.hypot(p[0] - 0.25, p[1] - 0.25, p[2] - 0.25) <= R + 1e-6) pts.push(p);
           }
   const uniq = pts.filter((p, i) => pts.findIndex((q) => Math.hypot(q[0] - p[0], q[1] - p[1], q[2] - p[2]) < 0.01) === i);
-  const atoms = uniq.map((p) => ({x: (p[0] - 0.5) * 2, y: (p[1] - 0.5) * 2, z: (p[2] - 0.5) * 2}));
+  const atoms = uniq.map((p) => ({x: (p[0] - 0.25) / R, y: (p[1] - 0.25) / R, z: (p[2] - 0.25) / R}));
   const bonds: [number, number][] = [];
   for (let i = 0; i < uniq.length; i++)
     for (let j = i + 1; j < uniq.length; j++) {
@@ -152,7 +153,7 @@ export const Carbon: React.FC = () => {
   // intan
   const yaw = t * 0.32;
   const pitch = 0.38 + 0.08 * Math.sin(t * 0.4);
-  const dp = DIAMOND.atoms.map((a) => project(a, PX[0], 520, 150, yaw, pitch));
+  const dp = DIAMOND.atoms.map((a) => project(a, PX[0], 500, 175, yaw, pitch));
   const dOrder = DIAMOND.atoms.map((_, i) => i).filter((i) => DIAMOND.keep[i]).sort((a, b) => dp[b].depth - dp[a].depth);
   const grow = (i: number) => ramp(pD, (i / DIAMOND.atoms.length) * 0.6, (i / DIAMOND.atoms.length) * 0.6 + 0.4);
 
@@ -185,36 +186,35 @@ export const Carbon: React.FC = () => {
           })}
           {dOrder.map((i) => {
             const d = dp[i].depth;
-            return <circle key={i} cx={dp[i].X} cy={dp[i].Y} r={(13 - d * 3) * grow(i)} fill="url(#atom-C)" stroke="#c8d3ef" strokeOpacity={0.5} strokeWidth={1.5} opacity={0.75 - d * 0.2} />;
+            return <circle key={i} cx={dp[i].X} cy={dp[i].Y} r={(15 - d * 4) * grow(i)} fill="url(#atom-C)" stroke="#c8d3ef" strokeOpacity={0.5} strokeWidth={1.5} opacity={0.75 - d * 0.2} />;
           })}
         </g>
         <Label x={PX[0]} y={740} size={28} color={C.ink} opacity={hard}>
           terkeras alami · penyekat
         </Label>
-        <Label x={PX[0]} y={782} size={24} color={C.muted} opacity={tetra}>
+        <Label x={PX[0]} y={782} size={26} color={C.muted} opacity={tetra}>
           4 tetangga · jaringan tetrahedral
         </Label>
 
         {/* grafit */}
         <g opacity={pG * (0.55 + 0.45 * focus[1])}>
           {[2, 1, 0].map((L) => (
-            <Sheet key={L} cx={PX[1] + (L === 1 ? 18 : 0)} cy={410 + L * 110} s={46} t={t} shift={L === 0 ? shiftTop : 0} pi={sea} flow={L === 0 ? flow : 0} seed={L} opacity={L === 0 ? 1 : 0.75} atomR={4.5} />
+            <Sheet key={L} cx={PX[1] + (L === 1 ? 18 : 0)} cy={400 + L * 105} s={33} t={t} shift={L === 0 ? shiftTop : 0} pi={sea} flow={L === 0 ? flow : 0} seed={L} opacity={L === 0 ? 1 : 0.75} atomR={4.5} />
           ))}
-          <path d={`M${PX[1] - 230},${360} L${PX[1] - 230},${600}`} stroke={C.muted} strokeWidth={2} strokeDasharray="4 6" opacity={0.6 * sea} />
         </g>
         <Label x={PX[1]} y={740} size={28} color={C.ink} opacity={cond}>
           menghantar listrik
         </Label>
-        <Label x={PX[1]} y={782} size={24} color={C.amber} opacity={sea * (1 - slide)}>
+        <Label x={PX[1]} y={782} size={26} color={C.amber} opacity={sea * (1 - slide)}>
           lautan elektron π
         </Label>
-        <Label x={PX[1]} y={782} size={24} color={C.muted} opacity={slide}>
+        <Label x={PX[1]} y={782} size={26} color={C.muted} opacity={slide}>
           lembaran mudah bergeser
         </Label>
 
         {/* grafena */}
         <g opacity={pF}>
-          <Sheet cx={PX[2]} cy={510} s={50} t={t} wave={10} pi={0.8} flow={0.8} seed={4} atomR={5} />
+          <Sheet cx={PX[2]} cy={500} s={36} t={t} wave={10} pi={0.8} flow={0.8} seed={4} atomR={5} />
         </g>
       </Stage>
       <Badge x={PX[2]} y={735} text="diisolasi 2004" color={C.mint} opacity={yr} scale={0.9 + 0.1 * yr} />

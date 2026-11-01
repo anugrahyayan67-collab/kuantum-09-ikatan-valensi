@@ -43,7 +43,7 @@ export const Oxygen: React.FC = () => {
   const para = ramp(t, wordOf(4, 'paramagnetik') - 0.2, wordOf(4, 'paramagnetik') + 0.5);
   const unp = ramp(t, wordOf(4, 'tak') - 0.4, wordOf(4, 'tak') + 0.6, BACK);
   const toMO = ramp(t, cue(5) - 0.3, cue(5) + 0.8, EASE_IN_OUT);
-  const mo = ramp(t, wordOf(5, 'orbital') - 1.4, wordOf(5, 'orbital') + 0.4);
+  const mo = ramp(t, cue(5) + 0.4, cue(5) + 1.4);
   const fail = ramp(t, wordOf(5, 'tidak') - 0.2, wordOf(5, 'tidak') + 0.5);
   const out = 1 - ramp(t, dur - 0.9, dur - 0.1, EASE_IN_OUT);
 

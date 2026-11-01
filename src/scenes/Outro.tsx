@@ -50,9 +50,10 @@ export const Outro: React.FC = () => {
           })()}
           {Array.from({length: 14}, (_, k) => {
             const ph = ((t * (0.035 + 0.02 * rand(k)) + rand(k * 3.1)) % 1 + 1) % 1;
+            const bottom = k < 8;
             const side = k % 2 ? 1 : -1;
-            const x = 960 + side * (720 + 120 * rand(k * 7.3)) + 30 * Math.sin(t * 0.5 + k);
-            const y = 1000 - ph * 920;
+            const x = bottom ? 140 + ph * 1640 + 40 * rand(k * 5.1) : 960 + side * (560 + 300 * rand(k * 7.3));
+            const y = bottom ? 850 + 150 * rand(k * 7.3) + 12 * Math.sin(t * 0.7 + k) : 360 - ph * 220;
             const op = 0.3 * cyc(ph);
             const kind = k % 3;
             const rot = t * 20 * (rand(k * 2.2) - 0.5);
