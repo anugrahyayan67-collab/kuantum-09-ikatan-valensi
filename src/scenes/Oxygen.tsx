@@ -243,6 +243,18 @@ export const Oxygen: React.FC = () => {
           ikatan valensi gagal <span style={{color: C.violet}}>→ orbital molekul</span>
         </div>
       </Card>
+      {/* pembuka: daftar keberhasilan VBT sebelum oksigen muncul */}
+      <div style={{position: 'absolute', left: 0, right: 0, top: 420, display: 'flex', justifyContent: 'center', gap: 28, opacity: ramp(t, 0.2, 1.0) * (1 - ramp(t, wordOf(0, 'oksigen') - 1.2, wordOf(0, 'oksigen') - 0.2, EASE_IN_OUT))}}>
+        {['H₂', 'CH₄', 'C₂H₄', 'C₂H₂', 'H₂O', 'C₆H₆', 'intan · grafit'].map((m, i) => {
+          const p = ramp(t, 0.3 + i * 0.22, 0.9 + i * 0.22);
+          return (
+            <div key={m} style={{opacity: p, translate: `0px ${(1 - p) * 18}px`, padding: '14px 26px', borderRadius: 14, border: `2px solid ${C.mint}`, background: 'rgba(10,20,36,0.7)', fontFamily: FONT.sans, fontSize: 36, fontWeight: 600, color: C.ink}}>
+              <span style={{color: C.mint, marginRight: 10}}>✓</span>
+              {m}
+            </div>
+          );
+        })}
+      </div>
     </AbsoluteFill>
   );
 };

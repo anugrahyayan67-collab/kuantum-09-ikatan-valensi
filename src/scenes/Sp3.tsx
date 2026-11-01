@@ -102,7 +102,7 @@ export const Sp3: React.FC = () => {
         }
       }
   }
-  const arcIt = angleArc(camT, {center: [0, 0, 0], u: TETRA[0], v: TETRA[1], r: 0.6, labelR: 1.0, p: arc, opacity: arc * (1 - hIn), label: '109,5°', size: 56, color: C.gold});
+  const arcIt = angleArc(camT, {center: [0, 0, 0], u: TETRA[0], v: TETRA[1], r: 0.6, labelR: 1.0, p: arc, opacity: arc * (1 - hIn), label: '', size: 56, color: C.gold});
   if (arcIt) items.push(arcIt);
 
   // hidrogen + ikatan σ
@@ -171,6 +171,12 @@ export const Sp3: React.FC = () => {
         </Label>
         <Label x={1440} y={465} size={28} color={C.muted} opacity={frame * frameOut} anchor="start">
           saling menjauh sejauh mungkin
+        </Label>
+        <Label x={1440} y={560} size={72} color={C.gold} weight={700} opacity={arc * (1 - hIn)} anchor="start">
+          109,5°
+        </Label>
+        <Label x={1440} y={605} size={26} color={C.muted} opacity={arc * (1 - hIn)} anchor="start">
+          sudut antar-hibrida (busur emas)
         </Label>
         <Label x={960} y={850} size={36} color={C.cyan} weight={700} opacity={done}>
           metana terjelaskan ✓
