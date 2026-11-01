@@ -62,9 +62,9 @@ const DensityPanel: React.FC<{sign: 1 | -1; t: number; opacity: number; cx: numb
             key={i}
             cx={MCX + d.x * S + 7 * Math.sin(t * 1.3 + d.ph)}
             cy={MCY + d.y * S + 7 * Math.cos(t * 1.1 + d.ph * 1.7)}
-            r={3.2}
+            r={3}
             fill="#e8fbff"
-            opacity={0.35 + 0.3 * Math.sin(t * 2 + d.ph)}
+            opacity={0.3 + 0.25 * Math.sin(t * 2 + d.ph)}
           />
         ))}
       </g>
@@ -192,8 +192,8 @@ export const Exchange: React.FC = () => {
         {/* profil kerapatan sepanjang sumbu */}
         <g opacity={prof}>
           <line x1={PXof(-X)} y1={PB} x2={PXof(X)} y2={PB} stroke={C.muted} strokeWidth={3} />
-          <path d={`${poly(gain)} ${back(ref)} Z`} fill={C.cyan} opacity={0.35 * refOp * grow} />
-          <path d={`${poly(ref)} ${back(loss)} Z`} fill={C.red} opacity={0.3 * refOp * grow} />
+          <path d={`${poly(gain)} ${back(ref)} Z`} fill={C.cyan} opacity={0.6 * refOp * grow} />
+          <path d={`${poly(ref)} ${back(loss)} Z`} fill={C.red} opacity={0.45 * refOp * grow} />
           <path d={poly(ref)} fill="none" stroke={C.muted} strokeWidth={3} strokeDasharray="8 8" opacity={refOp} />
           <path d={poly(fv)} fill="none" stroke={C.cyan} strokeWidth={5} opacity={1 - m} />
           <path d={poly(fv)} fill="none" stroke={C.red} strokeWidth={5} opacity={m} />

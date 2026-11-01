@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {BACK, EASE_IN_OUT, mix, ramp, slot, smoothPath} from '../anim';
-import {Atom, Badge, DrawPath, Formula, Glow, Label, Stage} from '../components/primitives';
+import {Atom, Badge, DrawPath, Formula, Label, Stage} from '../components/primitives';
 import {EDot, PlotFrame, morse} from '../components/vbB';
 import {useScene} from '../SceneContext';
 import {C, FONT} from '../theme';
@@ -58,7 +58,7 @@ export const Heitler: React.FC = () => {
   const s = 0.5 - 0.5 * Math.cos(Math.PI * phi);
   const arc = Math.sin(Math.PI * s);
   const w = t * 2.6;
-  const orbit = 52 * (1 - 0.6 * arc);
+  const orbit = 92 * (1 - 0.6 * arc);
   const E1 = {x: mix(AX, BX, s) + orbit * Math.cos(w), y: AY - 120 * arc + orbit * 0.55 * Math.sin(w)};
   const E2 = {x: mix(BX, AX, s) + orbit * Math.cos(w + 2.4), y: AY + 120 * arc + orbit * 0.55 * Math.sin(w + 2.4)};
   const shuttle = ramp(t, wordOf(3, 'bertukar') - 0.4, wordOf(3, 'bertukar') + 0.4);
@@ -108,8 +108,16 @@ export const Heitler: React.FC = () => {
 
         {/* ---------- dua inti & dua elektron ---------- */}
         <g opacity={atoms}>
-          <Glow x={AX} y={AY} r={170 + 6 * Math.sin(t * 1.7)} color="cyan" opacity={0.22} />
-          <Glow x={BX} y={AY} r={170 + 6 * Math.sin(t * 1.7 + 1)} color="cyan" opacity={0.22} />
+          {[AX, BX].map((x, k) => (
+            <g key={k}>
+              <circle cx={x} cy={AY} r={190 + 6 * Math.sin(t * 1.7 + k)} fill="url(#soft-cyan)" opacity={0.18} />
+              <ellipse cx={x} cy={AY} rx={92} ry={51} fill="none" stroke={C.blue} strokeWidth={2} strokeDasharray="4 8" opacity={0.55} />
+              <circle cx={x} cy={AY} r={120} fill={C.blue} fillOpacity={0.07} stroke={C.blue} strokeOpacity={0.35} strokeWidth={2} />
+              <text x={x} y={AY + 150} textAnchor="middle" fontFamily={FONT.serif} fontStyle="italic" fontSize={26} fill={C.blue}>
+                1s
+              </text>
+            </g>
+          ))}
           {/* lintasan tukar (muncul saat bertukar) */}
           <path d={`M${AX},${AY} Q960,${AY - 240} ${BX},${AY}`} fill="none" stroke={C.cyan} strokeWidth={2.5} strokeDasharray="6 10" opacity={0.5 * shuttle} />
           <path d={`M${BX},${AY} Q960,${AY + 240} ${AX},${AY}`} fill="none" stroke={C.cyan} strokeWidth={2.5} strokeDasharray="6 10" opacity={0.5 * shuttle} />
@@ -164,7 +172,7 @@ export const Heitler: React.FC = () => {
             <Label x={PX + PW - 10} y={EY(-3.14) - 26} size={30} color={C.violet} anchor="end" weight={700}>
               ≈ 3,1 eV
             </Label>
-            <Label x={RX(87) + 40} y={EY(-3.14) + 30} size={26} color={C.violet} anchor="start" weight={600}>
+            <Label x={RX(132)} y={EY(-3.14) + 30} size={26} color={C.violet} anchor="start" weight={600}>
               Heitler–London 1927 · 87 pm
             </Label>
             <circle cx={rider.x} cy={rider.y} r={30} fill="url(#soft-violet)" />

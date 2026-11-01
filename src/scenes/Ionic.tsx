@@ -58,11 +58,11 @@ const Struct: React.FC<{x: number; y: number; kind: 0 | 1 | 2; t: number; opacit
           'H–H kovalen'
         ) : kind === 1 ? (
           <>
-            H<tspan baselineShift="super" fontSize={22}>+</tspan> H<tspan baselineShift="super" fontSize={22}>−</tspan> ionik
+            H<tspan baselineShift="super" fontSize={24}>+</tspan> H<tspan baselineShift="super" fontSize={24}>−</tspan> ionik
           </>
         ) : (
           <>
-            H<tspan baselineShift="super" fontSize={22}>−</tspan> H<tspan baselineShift="super" fontSize={22}>+</tspan> ionik
+            H<tspan baselineShift="super" fontSize={24}>−</tspan> H<tspan baselineShift="super" fontSize={24}>+</tspan> ionik
           </>
         )}
       </text>
@@ -237,16 +237,16 @@ export const Ionic: React.FC = () => {
           {[0, 1, 2].map((k) => (
             <line key={k} x1={1490 + k * 6} y1={700 + k * 8} x2={1590 + k * 6} y2={700 + k * 8} stroke={[C.cyan, C.pink, C.violet][k]} strokeWidth={5} strokeLinecap="round" />
           ))}
-          <Label x={1660} y={712} size={22} color={C.muted} anchor="start">
+          <Label x={1630} y={706} size={26} color={C.muted} anchor="start">
             tiap struktur
           </Label>
           <line x1={1490} y1={820} x2={1600} y2={820} stroke={mixed} strokeWidth={7} strokeLinecap="round" />
-          <Label x={1660} y={820} size={22} color={C.mint} anchor="start" weight={600}>
+          <Label x={1630} y={822} size={26} color={C.mint} anchor="start" weight={600}>
             campuran
           </Label>
           <line x1={1545} y1={730} x2={1545} y2={800} stroke={C.mint} strokeWidth={4} />
           <path d={`M1533,788 L1545,806 L1557,788`} fill="none" stroke={C.mint} strokeWidth={4} strokeLinejoin="round" />
-          <Label x={1660} y={766} size={22} color={C.mint} anchor="start">
+          <Label x={1630} y={764} size={26} color={C.mint} anchor="start">
             lebih stabil
           </Label>
         </g>

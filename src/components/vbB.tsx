@@ -109,7 +109,7 @@ export const densityURL = (sign: 1 | -1, R: number, X: number, Y: number) => {
     }
   for (let j = 0; j < H0; j++)
     for (let i = 0; i < W0; i++) {
-      const v = Math.pow(vals[j * W0 + i] / max, 0.5);
+      const v = 0.92 * Math.pow(vals[j * W0 + i] / max, 0.8);
       const c = cyanMap(v);
       const u = (2 * (i + 0.5)) / W0 - 1;
       const w = (2 * (j + 0.5)) / H0 - 1;

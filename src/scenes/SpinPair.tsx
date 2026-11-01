@@ -11,7 +11,7 @@ import {C, FONT} from '../theme';
 // ruang antisimetris × spin triplet → tolak (kurva naik). Pasangan Lewis = ↑↓.
 
 const R1 = 400;
-const R2 = 680;
+const R2 = 725;
 const CR = 430; // kolom ruang
 const CS = 900; // kolom spin
 const PXa = 1270; // kotak kurva kecil
@@ -103,7 +103,7 @@ export const SpinPair: React.FC = () => {
   const trip = ramp(t, wordOf(3, 'triplet') - 0.4, wordOf(3, 'triplet') + 0.4, BACK);
   const r2a = ramp(t, wordOf(3, 'antisimetris') - 0.4, wordOf(3, 'antisimetris') + 0.4);
   const nodeOn = ramp(t, wordOf(3, 'simpul') - 0.3, wordOf(3, 'simpul') + 0.4);
-  const repCurve = ramp(t, wordOf(3, 'naik') - 0.4, wordOf(3, 'naik') + 1.2, EASE_IN_OUT);
+  const repCurve = ramp(t, wordOf(3, 'kurva') - 0.4, wordOf(3, 'naik') + 0.5, EASE_IN_OUT);
   const hl2 = ramp(t, cue(3), cue(3) + 0.5);
 
   // baris 4: dua H spin sejajar terpental
@@ -193,21 +193,21 @@ export const SpinPair: React.FC = () => {
           </g>
           {/* pasangan Lewis H:H → ↑↓ */}
           <g opacity={lewisIn * (1 - r2 * 0.6)}>
-            <Label x={CS - 80} y={R1 + 160} size={40} color={C.ink} weight={700} opacity={1}>
+            <Label x={CS - 80} y={R1 + 150} size={40} color={C.ink} weight={700} opacity={1}>
               H
             </Label>
-            <Label x={CS + 80} y={R1 + 160} size={40} color={C.ink} weight={700}>
+            <Label x={CS + 80} y={R1 + 150} size={40} color={C.ink} weight={700}>
               H
             </Label>
             <g opacity={1 - lewisM}>
-              <circle cx={CS - 14} cy={R1 + 160} r={8} fill={C.cyan} />
-              <circle cx={CS + 14} cy={R1 + 160} r={8} fill={C.cyan} />
+              <circle cx={CS - 14} cy={R1 + 150} r={8} fill={C.cyan} />
+              <circle cx={CS + 14} cy={R1 + 150} r={8} fill={C.cyan} />
             </g>
             <g opacity={lewisM}>
-              <SpinUD x={CS - 16} y={R1 + 160} up len={mix(16, 52, lewisM)} width={5} />
-              <SpinUD x={CS + 16} y={R1 + 160} up={false} len={mix(16, 52, lewisM)} width={5} />
+              <SpinUD x={CS - 16} y={R1 + 150} up len={mix(16, 52, lewisM)} width={5} />
+              <SpinUD x={CS + 16} y={R1 + 150} up={false} len={mix(16, 52, lewisM)} width={5} />
             </g>
-            <Label x={CS + 150} y={R1 + 160} size={24} color={C.muted} anchor="start" opacity={lewisM}>
+            <Label x={CS + 150} y={R1 + 150} size={24} color={C.muted} anchor="start" opacity={lewisM}>
               pasangan Lewis
             </Label>
           </g>

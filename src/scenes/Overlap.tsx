@@ -75,7 +75,7 @@ export const Overlap: React.FC = () => {
   // baris 3: π
   const v3 = ramp(t, cue(3) - 0.1, cue(3) + 0.6) * (1 - ramp(t, cue(4) - 0.3, cue(4) + 0.4, EASE_IN_OUT));
   const app3 = ramp(t, wordOf(3, 'samping') - 1.0, wordOf(3, 'samping') + 0.8, EASE_IN_OUT);
-  const dPI = mix(300, 108, app3) + 4 * Math.sin(t * 2.1);
+  const dPI = mix(300, 100, app3) + 4 * Math.sin(t * 2.1);
   const piLab = ramp(t, wordOf(3, 'pi', 1) - 0.4, wordOf(3, 'pi', 1) + 0.4, BACK);
   const upDown = ramp(t, wordOf(3, 'atas') - 0.4, wordOf(3, 'bawah') + 0.4);
   // baris 4: σ vs π
@@ -83,7 +83,7 @@ export const Overlap: React.FC = () => {
   const cmp = ramp(t, wordOf(4, 'kecil') - 0.4, wordOf(4, 'kecil') + 0.8, EASE_IN_OUT);
   const weak = ramp(t, wordOf(4, 'lemah') - 0.4, wordOf(4, 'lemah') + 0.4, BACK);
   const d4s = 255 + 5 * Math.sin(t * 2);
-  const d4p = 108 + 4 * Math.sin(t * 2.1);
+  const d4p = 100 + 4 * Math.sin(t * 2.1);
 
   // batang kanan (baris 0, 1, 3)
   const bar0 = strength('ss', dSS);
@@ -108,7 +108,7 @@ export const Overlap: React.FC = () => {
         {/* baris 1: σ ujung ke ujung */}
         <PairView id="ov-pp1" kind="pp" d={dPP1} cx={860} cy={490} sc={1.15} t={t} opacity={v1} axis={axis1} />
         <g opacity={v1}>
-          <Label x={860 + 330} y={540} size={24} color={C.muted} opacity={axis1}>
+          <Label x={1225} y={490} size={24} color={C.muted} anchor="start" opacity={axis1}>
             sumbu ikatan
           </Label>
           <g opacity={sig}>
