@@ -46,7 +46,7 @@ export const LonePair: React.FC = () => {
   const fin = ramp(t, cue(3) - 0.2, cue(3) + 0.3);
   // baris 4: air ke tengah, dipol
   const solo = ramp(t, cue(4) - 0.3, cue(4) + 0.9, EASE_IN_OUT);
-  const dip = ramp(t, wordOf(4, 'membengkok') - 0.2, wordOf(4, 'air') + 0.3);
+  const dip = ramp(t, wordOf(4, 'membengkok') - 0.2, wordOf(4, 'air', 0) + 0.3);
   const polar = ramp(t, wordOf(4, 'polar') - 0.3, wordOf(4, 'polar') + 0.4, BACK);
 
   const angN = mix(109.47, 106.7, squeeze);
@@ -59,7 +59,7 @@ export const LonePair: React.FC = () => {
     return {
       cx: isO ? mix(x, 960, solo) : x,
       cy: isO ? mix(CY, 540, solo) : CY,
-      s: isO ? mix(120, 190, solo) : 120,
+      s: isO ? mix(130, 185, solo) : 130,
       yaw: k === 0 ? 0.3 + t * 0.3 : k === 1 ? 0.9 + t * 0.25 : 0.55 * Math.sin(t * 0.35),
       pitch: -0.3,
     };
@@ -69,7 +69,7 @@ export const LonePair: React.FC = () => {
     const d = norm(dir);
     const perp = norm(Math.abs(d[2]) > 0.9 ? [1, 0, 0] : [d[1], -d[0], 0]);
     const out: Item[] = [];
-    const L = lobe(cam, {origin, dir: d, len: lpLen, wid: lpWid, color: 'cyan', opacity: 0.42 * op, profile: 'hybrid', glow});
+    const L = lobe(cam, {origin, dir: d, len: lpLen, wid: lpWid, color: 'cyan', opacity: (0.42 - 0.12 * solo) * op, profile: 'hybrid', glow});
     if (L) out.push(L);
     for (const sgn of [-1, 1]) {
       const j = 0.06 * Math.sin(t * 2.3 + seed + sgn);
@@ -108,9 +108,7 @@ export const LonePair: React.FC = () => {
   // label arc positions
   const arcLab = (k: number) => {
     const cam = cams[k];
-    const [u, v] = k === 0 ? [TETRA[1], TETRA[2]] : k === 1 ? [nh[0], nh[1]] : [oh[0], oh[1]];
-    const m = norm(add(u, v));
-    return proj(mul(m, k === 2 ? 1.45 : 1.55), cam);
+    return {X: cam.cx, Y: cam.cy + cam.s * 1.6 + 10};
   };
 
   // dipol air (δ− → δ+, IUPAC), di samping molekul

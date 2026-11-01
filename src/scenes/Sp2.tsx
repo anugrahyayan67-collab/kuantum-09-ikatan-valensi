@@ -34,21 +34,21 @@ const CC = 0.67; // setengah jarak C=C (134 pm)
 export const Sp2: React.FC = () => {
   const {t, cue, wordOf} = useScene();
   const pulse = 0.5 + 0.5 * Math.sin(t * 3.2);
-  const yaw = -0.35 + 0.28 * Math.sin(t * 0.35) + t * 0.05;
-  const pitch = -0.5;
+  const yaw = -0.32 + 0.3 * Math.sin(t * 0.35);
+  const pitch = -0.28;
 
   // baris 0
   const card0 = slot(t, 0.3, cue(1) + 0.1);
-  const orbIn = ramp(t, wordOf(0, 'karbon') - 0.3, wordOf(0, 'karbon') + 0.5);
+  const orbIn = ramp(t, 0.6, 1.4);
   const mixP = ramp(t, wordOf(0, 'mencampur') - 0.1, cue(1) + 0.4, EASE_IN_OUT);
   // baris 1
   const hyb = ramp(t, cue(1) - 0.1, wordOf(1, 'hibrida') + 0.5, EASE_IN_OUT);
   const plane = ramp(t, wordOf(1, 'bidang') - 0.3, wordOf(1, 'bidang') + 0.4);
   const arc = ramp(t, wordOf(1, 'seratus') - 0.2, wordOf(1, 'derajat') + 0.2, EASE_IN_OUT);
   // baris 2
-  const pHi = ramp(t, cue(2), wordOf(2, 'tegak') + 0.4) * (1 - ramp(t, wordOf(2, 'Dua') - 0.2, wordOf(2, 'Dua') + 0.3));
-  const two = ramp(t, wordOf(2, 'Dua') - 0.2, wordOf(2, 'karbon') + 0.4, EASE_IN_OUT);
-  const pi = ramp(t, wordOf(2, 'samping') - 0.3, wordOf(2, 'pi') + 0.3, EASE_IN_OUT);
+  const pHi = ramp(t, cue(2), wordOf(2, 'tegak') + 0.4) * (1 - ramp(t, wordOf(2, 'Dua', 0) - 0.2, wordOf(2, 'Dua', 0) + 0.3));
+  const two = ramp(t, wordOf(2, 'Dua', 0) - 0.2, wordOf(2, 'karbon') + 0.4, EASE_IN_OUT);
+  const pi = ramp(t, wordOf(2, 'samping') - 0.3, wordOf(2, 'pi.') + 0.3, EASE_IN_OUT);
   // baris 3
   const skel = ramp(t, cue(3) - 0.2, cue(3) + 0.8, EASE_IN_OUT);
   const card3 = slot(t, cue(3) + 0.1, wordOf(4, 'isomer') - 0.2);
@@ -66,7 +66,7 @@ export const Sp2: React.FC = () => {
   const meter = ramp(t, wordOf(4, 'Memutar') - 0.2, wordOf(4, 'Memutar') + 0.3) * ethOut;
 
   const items: Item[] = [];
-  const cam: Cam = {cx: 960, cy: 600, s: mix(170, 150, two), yaw, pitch};
+  const cam: Cam = {cx: 960, cy: 600, s: mix(170, 185, two), yaw, pitch};
   // posisi karbon: tunggal di origin → C1 di −CC; C2 masuk dari kanan
   const c1: V3 = [-CC * two, 0, 0];
   const c2: V3 = [mix(5, CC, two), 0, 0];
@@ -96,8 +96,8 @@ export const Sp2: React.FC = () => {
     // awan π (atas & bawah bidang)
     const piOp = pi * piAmt * ethOut;
     if (piOp > 0.01) {
-      for (const z of [0.5, -0.5]) {
-        const it = cloud(cam, {center: [0, 0, z], axis: [1, 0, 0], a: 1.25, b: 0.36, color: 'amber', opacity: 0.85 * piOp, glow: piHi * pulse + 0.3});
+      for (const z of [0.6, -0.6]) {
+        const it = cloud(cam, {center: [0, 0, z], axis: [1, 0, 0], a: 1.25, b: 0.32, color: 'amber', opacity: 0.85 * piOp, glow: piHi * pulse + 0.3});
         if (it) items.push(it);
       }
     }
@@ -129,13 +129,13 @@ export const Sp2: React.FC = () => {
         if (w) items.push(w);
       }
     }
-    const ar = angleArc(cam, {center: [0, 0, 0], u: H120[0], v: H120[1], r: 0.55, labelR: 0.95, p: arc, opacity: arc * (1 - two), label: '120°', size: 56, color: C.gold});
+    const ar = angleArc(cam, {center: [0, 0, 0], u: H120[0], v: H120[1], r: 0.55, labelR: 1.5, p: arc, opacity: arc * (1 - two), label: '120°', size: 56, color: C.gold});
     if (ar) items.push(ar);
   }
 
   // label σ / π
   const sigP = proj([0, 0, 0], cam);
-  const piP = proj([0, 0, 0.95], cam);
+  const piP = proj([0, 0, 1.0], cam);
   const pTop = proj([0, 0, 1.15], cam);
 
   // isomer cis / trans 2-butena (bidang molekul menghadap penonton)
@@ -186,7 +186,7 @@ export const Sp2: React.FC = () => {
           <Label x={sigP.X} y={sigP.Y + 70} size={44} color={C.cyan} weight={700} opacity={0.6 + 0.4 * sigHi}>
             σ
           </Label>
-          <Label x={piP.X + 230} y={piP.Y - 20} size={44} color={C.amber} weight={700} opacity={0.6 + 0.4 * piHi}>
+          <Label x={piP.X} y={piP.Y - 40} size={44} color={C.amber} weight={700} opacity={0.6 + 0.4 * piHi}>
             π
           </Label>
         </g>

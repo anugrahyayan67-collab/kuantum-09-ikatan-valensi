@@ -27,20 +27,20 @@ export const Sp: React.FC = () => {
   const pIn = ramp(t, wordOf(0, 'mencampur') - 0.2, wordOf(0, 'mencampur') + 0.5);
   // baris 1: dua karbon, dua π
   const two = ramp(t, cue(1) - 0.2, cue(1) + 1.0, EASE_IN_OUT);
-  const pi = ramp(t, wordOf(1, 'ikatan') - 0.2, wordOf(1, 'membungkus') + 0.3, EASE_IN_OUT);
+  const pi = ramp(t, wordOf(1, 'ikatan', 0) - 0.2, wordOf(1, 'membungkus') + 0.3, EASE_IN_OUT);
   // baris 2: kerangka bola-batang + σ + 2π
   const skel = ramp(t, cue(2) - 0.2, cue(2) + 0.7, EASE_IN_OUT);
   const card2 = slot(t, cue(2) + 0.1, cue(3) + 0.1);
   // baris 3–4: diagram
   const molOut = 1 - ramp(t, cue(3) - 0.3, cue(3) + 0.4, EASE_IN_OUT);
   const chart = ramp(t, cue(3) + 0.1, cue(3) + 0.8);
-  const rowIn = [wordOf(3, 'tunggal'), wordOf(3, 'dua'), wordOf(3, 'rangkap', 1)].map((w) => ramp(t, w - 0.3, w + 0.5, BACK));
+  const rowIn = [wordOf(3, 'tunggal'), wordOf(3, 'dua', 0), wordOf(3, 'rangkap', 1)].map((w) => ramp(t, w - 0.3, w + 0.5, BACK));
   const enIn = [wordOf(4, 'tiga'), wordOf(4, 'enam'), wordOf(4, 'delapan')].map((w) => ramp(t, w - 0.3, w + 0.8, EASE_IN_OUT));
   const enTitle = ramp(t, cue(4) - 0.2, cue(4) + 0.5);
 
   const roll = t * 0.45;
   const R = (v: V3) => rotX(v, roll);
-  const cam: Cam = {cx: 960, cy: 590, s: mix(190, 150, two), yaw: 0.28 + 0.12 * Math.sin(t * 0.4), pitch: -0.35};
+  const cam: Cam = {cx: 960, cy: 590, s: mix(190, 175, two), yaw: 0.16 + 0.12 * Math.sin(t * 0.4), pitch: -0.35};
   const c1: V3 = [-CC * two, 0, 0];
   const c2: V3 = [mix(5, CC, two), 0, 0];
 
@@ -57,7 +57,7 @@ export const Sp: React.FC = () => {
       }
     }
     // dua p tersisa per karbon (berputar mengelilingi sumbu)
-    const pOp = pIn * (1 - pi) * molOut;
+    const pOp = pIn * (1 - pi) * molOut * mix(0.55, 1, two);
     if (pOp > 0.01) {
       for (const [c, w] of [
         [c1, 1],
@@ -163,7 +163,7 @@ export const Sp: React.FC = () => {
 
         {/* energi ikatan */}
         <g opacity={chart * enTitle}>
-          <Label x={1450} y={290} size={34} color={C.red} weight={700}>
+          <Label x={1450} y={262} size={34} color={C.red} weight={700}>
             energi ikatan (kJ/mol) — makin kuat
           </Label>
           <line x1={1150} y1={BASE} x2={1750} y2={BASE} stroke={C.faint} strokeWidth={3} />

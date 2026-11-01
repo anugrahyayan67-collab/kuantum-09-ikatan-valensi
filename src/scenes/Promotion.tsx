@@ -26,13 +26,13 @@ export const Promotion: React.FC = () => {
 
   // panel kanan baris 1: CH₂? vs CH₄
   const r1 = slot(t, cue(1) + 0.2, cue(2) + 0.6, 0.6, 0.5);
-  const ch2 = ramp(t, wordOf(1, 'dua') - 0.3, wordOf(1, 'ikatan') + 0.2, BACK);
+  const ch2 = ramp(t, wordOf(1, 'dua') - 0.3, wordOf(1, 'ikatan', 0) + 0.2, BACK);
   const ch4 = ramp(t, wordOf(1, 'metana') - 0.2, wordOf(1, 'metana') + 0.6);
   const fourB = ramp(t, wordOf(1, 'empat', 1) - 0.2, wordOf(1, 'empat', 1) + 0.5);
 
   // panel kanan baris 3: neraca energi
   const r3 = slot(t, cue(3) - 0.1, cue(4), 0.6, 0.4);
-  const cost = ramp(t, wordOf(3, 'butuh') - 0.2, wordOf(3, 'energi') + 0.4, EASE_IN_OUT);
+  const cost = ramp(t, wordOf(3, 'butuh') - 0.2, wordOf(3, 'energi', 0) + 0.4, EASE_IN_OUT);
   const gain = ramp(t, wordOf(3, 'melepaskan') - 0.2, wordOf(3, 'besar') + 0.2, EASE_IN_OUT);
   const win = ramp(t, wordOf(3, 'untung') - 0.3, wordOf(3, 'untung') + 0.4, BACK);
 

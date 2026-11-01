@@ -20,7 +20,8 @@ const CHOSEN = 1;
 export const Sp3: React.FC = () => {
   const {t, cue, wordOf} = useScene();
   const pulse = 0.5 + 0.5 * Math.sin(t * 3.2);
-  const yaw = 0.4 + t * 0.3;
+  const yawSpin = 0.4 + t * 0.3;
+  const yawRow = 0.3 + 0.25 * Math.sin(t * 0.5);
   const pitch = -0.32;
 
   // baris 0: Pauling, lalu s + 3p bergerak ke tengah & melebur
@@ -52,6 +53,7 @@ export const Sp3: React.FC = () => {
   const card4 = slot(t, wordOf(4, 'ikatan') - 0.1, 999);
   const frameOut = 1 - ramp(t, cue(4) - 0.2, cue(4) + 0.6);
 
+  const yaw = mix(yawRow, yawSpin, Math.max(tet, hIn));
   const items: Item[] = [];
   // s + 3p (sebelum melebur)
   const orbOp = 1 - ramp(merge, 0.55, 0.95);
@@ -67,23 +69,23 @@ export const Sp3: React.FC = () => {
   }
 
   // empat hibrida: baris → (fokus) → tetrahedron
-  const hybOp = emerge * (1 - sig * 0.85);
+  const hybOp = emerge * (1 - sig * 0.85) * (1 - 0.5 * hIn);
   if (hybOp > 0.01) {
     for (let k = 0; k < 4; k++) {
       const isC = k === CHOSEN;
       const rowX = mix(960, ROW[k], emerge);
       const cx = mix(isC ? mix(rowX, 960, focus) : rowX, 960, tet);
-      const s = mix(isC ? mix(110, 210, focus) : 110, 150, tet);
+      const s = mix(isC ? mix(110, 210, focus) : 110, 175, tet);
       const cam: Cam = {cx, cy: mix(CY, 560, tet), s, yaw, pitch};
       const dir = norm(lerp3(D0, TETRA[k], tet));
       const op = hybOp * (isC ? 1 : 1 - focus * 0.9);
-      items.push(...hybrid(cam, {origin: [0, 0, 0], dir, len: 1.3, wid: 0.55, opacity: 0.88 * op, glow: Math.max(iden * pulse * (1 - tet), isC ? big * focus : 0)}));
+      items.push(...hybrid(cam, {origin: [0, 0, 0], dir, len: mix(1.3, 1.1, tet), wid: mix(0.55, 0.4, tet), opacity: 0.88 * op, glow: Math.max(iden * pulse * (1 - tet), isC ? big * focus : 0)}));
     }
   }
 
   // kerangka tetrahedron + kubus
-  const camT: Cam = {cx: 960, cy: 560, s: 150, yaw, pitch};
-  const R = 1.25;
+  const camT: Cam = {cx: 960, cy: 560, s: 175, yaw, pitch};
+  const R = 1.1;
   const A = TETRA.map((v) => mul(v, R));
   const B = TETRA.map((v) => mul(v, -R));
   const frOp = frame * frameOut;
@@ -100,7 +102,7 @@ export const Sp3: React.FC = () => {
         }
       }
   }
-  const arcIt = angleArc(camT, {center: [0, 0, 0], u: TETRA[0], v: TETRA[1], r: 0.6, labelR: 1.0, p: arc, opacity: arc * (1 - done * 0.4), label: '109,5°', size: 56, color: C.gold});
+  const arcIt = angleArc(camT, {center: [0, 0, 0], u: TETRA[0], v: TETRA[1], r: 0.6, labelR: 1.0, p: arc, opacity: arc * (1 - hIn), label: '109,5°', size: 56, color: C.gold});
   if (arcIt) items.push(arcIt);
 
   // hidrogen + ikatan σ
