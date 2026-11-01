@@ -1,0 +1,160 @@
+[00:00] Mengapa atom mau bergandengan
+
+Dua atom hidrogen melayang di ruang hampa. Masing-masing punya satu elektron, dan masing-masing netral.
+Mereka saling mendekat, lalu tiba-tiba terkunci menjadi satu molekul, melepaskan energi sekitar empat ratus tiga puluh enam kilojoule per mol.
+Tidak ada muatan yang tarik-menarik seperti pada garam dapur. Lalu apa yang mengikat mereka?
+Kimiawan sudah lama menggambar ikatan sebagai sepasang elektron yang dipakai bersama. Tapi mengapa berbagi elektron menurunkan energi?
+Jawabannya baru datang pada tahun seribu sembilan ratus dua puluh tujuh, dari mekanika kuantum.
+Hari ini kita membedah jawaban itu: teori ikatan valensi, jabat tangan dua elektron.
+
+[01:01] Peta video
+
+Perjalanan kita punya tiga bagian.
+Pertama, prinsip dasar: kurva energi, fungsi gelombang Heitler–London, pasangan spin, dan tumpang tindih orbital.
+Kedua, implementasi dalam kimia: hibridisasi, bentuk molekul, pasangan elektron bebas, dan resonansi.
+Ketiga, penerapan: wujud karbon, plastik yang menghantarkan listrik, dan satu kegagalan penting yang membuka teori berikutnya.
+
+[01:33] Bab 01 — Pasangan elektron Lewis
+
+Tahun seribu sembilan ratus enam belas, Gilbert Lewis mengusulkan ikatan kovalen sebagai sepasang elektron yang dimiliki dua atom.
+Gambar titik dan garisnya masih kita pakai sampai sekarang.
+Tapi Lewis tidak bisa menjawab dua pertanyaan: mengapa harus berpasangan, dan mengapa berbagi itu lebih stabil.
+Elektron saling tolak. Menaruh dua elektron di tempat yang sama seharusnya menaikkan energi, bukan menurunkannya.
+
+[02:06] Bab 02 — Kurva energi H₂
+
+Mari ukur energinya. Sumbu datar adalah jarak antarinti, sumbu tegak adalah energi.
+Saat jauh, kedua atom tidak saling merasakan, energinya kita sebut nol.
+Saat mendekat, energi turun, sampai titik terendah pada jarak tujuh puluh empat pikometer.
+Lebih dekat lagi, kedua inti saling tolak dan energi melonjak naik.
+Kedalaman sumur itu sekitar empat koma tujuh lima elektronvolt. Itulah kekuatan ikatan H dua.
+
+[02:42] Bab 03 — Heitler dan London
+
+Tahun seribu sembilan ratus dua puluh tujuh, Walter Heitler dan Fritz London menerapkan persamaan Schrödinger pada molekul hidrogen.
+Tebakan pertama: elektron satu di atom A, elektron dua di atom B.
+Tapi elektron identik, jadi susunan sebaliknya sama sahnya: elektron dua di A, elektron satu di B.
+Fungsi gelombang yang benar menjumlahkan keduanya. Elektron tidak lagi milik satu atom; keduanya bertukar tempat.
+Hasil hitungannya: sumur energi muncul, sekitar tiga koma satu elektronvolt. Belum tepat, tapi ikatan kovalen terjelaskan untuk pertama kali.
+
+[03:27] Bab 04 — Rahasia di antara inti
+
+Apa yang terjadi pada elektronnya? Lihat kerapatan elektron dari fungsi yang dijumlahkan.
+Kerapatan menumpuk di antara kedua inti, seperti lem yang ditarik oleh keduanya sekaligus.
+Elektron di daerah itu merasakan tarikan dua proton, sehingga energinya lebih rendah daripada di atom sendirian.
+Kalau fungsinya dikurangkan, muncul simpul tepat di tengah. Elektron menjauh dari celah itu, dan atom-atom saling tolak.
+Efek penjumlahan dan pengurangan ini disebut efek pertukaran. Tidak ada padanannya dalam fisika klasik.
+
+[04:10] Bab 05 — Pasangan spin
+
+Ingat larangan Pauli: fungsi gelombang total harus berganti tanda bila dua elektron ditukar.
+Bagian ruang yang dijumlahkan bersifat simetris. Maka bagian spinnya harus antisimetris: itulah singlet.
+Jadi ikatan hanya terbentuk bila kedua spin berlawanan. Inilah alasan kuantum di balik pasangan elektron Lewis.
+Bila kedua spin sejajar, keadaan triplet, bagian ruangnya harus antisimetris, ada simpul di tengah, dan kurva energinya naik terus.
+Dua atom hidrogen dengan spin sejajar tidak akan pernah berikatan.
+
+[04:51] Bab 06 — Struktur ionik & resonansi
+
+Heitler–London hanya memakai susunan kovalen: satu elektron di tiap atom.
+Sesekali kedua elektron bisa berada di atom yang sama, menghasilkan H plus dan H minus.
+Menambahkan sedikit susunan ionik ini, ditambah penyesuaian ukuran orbital, energi ikatannya mendekati empat elektronvolt.
+Pencampuran beberapa struktur seperti ini disebut resonansi.
+Resonansi bukan molekul yang berganti-ganti bentuk. Molekul nyata adalah satu keadaan campuran, lebih stabil daripada tiap strukturnya.
+
+[05:32] Bab 07 — Tumpang tindih orbital
+
+Dari kasus hidrogen muncul satu aturan praktis: ikatan makin kuat bila orbital kedua atom makin banyak bertumpang tindih.
+Bila orbital bertemu ujung ke ujung, sepanjang sumbu ikatan, terbentuk ikatan sigma.
+Ikatan sigma bisa dari s dengan s, s dengan p, atau p dengan p yang saling menghadap.
+Bila dua orbital p sejajar dan bertemu dari samping, terbentuk ikatan pi, dengan kerapatan di atas dan di bawah sumbu.
+Tumpang tindih samping lebih kecil, jadi ikatan pi umumnya lebih lemah daripada sigma.
+
+[06:12] Bab 08 — Teka-teki karbon
+
+Sekarang karbon. Konfigurasinya dua s dua, dua p dua: hanya dua elektron tak berpasangan.
+Menurut aturan pasangan spin, karbon seharusnya hanya membentuk dua ikatan. Tapi metana, C H empat, punya empat ikatan.
+Jalan keluarnya: promosi. Satu elektron dua s naik ke orbital dua p yang kosong, sehingga ada empat elektron tak berpasangan.
+Promosi butuh energi, tapi dua ikatan tambahan melepaskan energi jauh lebih besar. Hasil akhirnya untung.
+Masalah baru: satu orbital s dan tiga orbital p berbeda bentuk. Padahal keempat ikatan metana identik.
+
+[06:58] Bab 09 — Hibridisasi sp³
+
+Tahun seribu sembilan ratus tiga puluh satu, Linus Pauling menyarankan: campurkan orbital s dan p menjadi orbital baru.
+Satu s dan tiga p menghasilkan empat orbital hibrida sp tiga yang identik.
+Masing-masing punya satu lobus besar yang menonjol ke satu arah, cocok untuk tumpang tindih yang kuat.
+Agar saling menjauh sejauh mungkin, keempatnya menunjuk ke sudut-sudut tetrahedron, dengan sudut seratus sembilan koma lima derajat.
+Empat hibrida bertemu empat orbital s hidrogen: empat ikatan sigma yang identik. Metana terjelaskan.
+
+[07:40] Bab 10 — Hibridisasi sp² & ikatan rangkap
+
+Bagaimana dengan etilena, C dua H empat? Di sini karbon mencampur satu s dengan dua p saja.
+Hasilnya tiga hibrida sp dua dalam satu bidang, bersudut seratus dua puluh derajat.
+Satu orbital p tersisa, tegak lurus bidang. Dua orbital p dari dua karbon bertumpang tindih dari samping: ikatan pi.
+Ikatan rangkap dua adalah satu sigma ditambah satu pi.
+Memutar ikatan rangkap berarti memutus tumpang tindih pi. Itu sebabnya ikatan rangkap kaku, dan ada isomer cis dan trans.
+
+[08:20] Bab 11 — Hibridisasi sp & ikatan rangkap tiga
+
+Pada asetilena, karbon mencampur satu s dengan satu p: dua hibrida sp yang berlawanan arah, seratus delapan puluh derajat.
+Dua orbital p tersisa membentuk dua ikatan pi yang saling tegak lurus, membungkus sumbu ikatan.
+Ikatan rangkap tiga: satu sigma dan dua pi.
+Makin banyak ikatan, makin pendek dan makin kuat: tunggal sekitar seratus lima puluh empat pikometer, rangkap dua seratus tiga puluh empat, rangkap tiga seratus dua puluh.
+Energinya pun naik: kira-kira tiga ratus lima puluh, enam ratus sepuluh, dan delapan ratus empat puluh kilojoule per mol.
+
+[09:05] Bab 12 — Pasangan elektron bebas
+
+Nitrogen dan oksigen juga memakai hibrida yang mirip sp tiga, tapi tidak semua hibridanya dipakai berikatan.
+Pada amonia, satu hibrida berisi pasangan elektron bebas. Pada air, ada dua.
+Pasangan bebas lebih gemuk dan lebih dekat ke inti, sehingga mendorong ikatan lainnya saling merapat.
+Sudut metana seratus sembilan koma lima, amonia sekitar seratus tujuh, dan air seratus empat koma lima derajat.
+Sudut yang membengkok inilah yang membuat air polar, dan memberi air banyak sifat istimewanya.
+
+[09:46] Bab 13 — Meramal bentuk molekul
+
+Hibridisasi memberi kita cara cepat menebak bentuk molekul.
+Boron trifluorida: boron membentuk tiga ikatan tanpa pasangan bebas, hibrida sp dua, segitiga datar.
+Karbon dioksida: karbon dengan dua ikatan rangkap dua, hibrida sp, lurus.
+Metana, amonia, dan air: empat pasang elektron di sekitar atom pusat, hibrida sp tiga, berturut-turut tetrahedral, piramida, dan bengkok.
+Hibridisasi adalah cara menggambarkan bentuk yang teramati, bukan penyebab bentuk itu. Bentuknya tetap diukur dari eksperimen.
+
+[10:28] Bab 14 — Resonansi benzena
+
+Benzena, C enam H enam: cincin enam karbon sp dua, masing-masing menyisakan satu orbital p.
+Kekulé menggambarnya dengan tiga ikatan rangkap berselang-seling. Tapi ada dua cara menaruh rangkapnya.
+Eksperimen menunjukkan keenam ikatan sama panjang, sekitar seratus tiga puluh sembilan pikometer, di antara tunggal dan rangkap.
+Teori ikatan valensi menjelaskannya sebagai resonansi kedua struktur Kekulé.
+Hasilnya, benzena lebih stabil sekitar seratus lima puluh kilojoule per mol daripada satu struktur Kekulé saja.
+
+[11:10] Bab 15 — Intan, grafit, grafena
+
+Hibridisasi yang sama menentukan wujud unsur karbon.
+Pada intan, setiap karbon sp tiga terikat ke empat tetangga dalam jaringan tetrahedral. Hasilnya bahan alami terkeras, dan penyekat listrik.
+Pada grafit, karbon sp dua membentuk lembaran heksagonal. Orbital p yang tersisa menyatu menjadi lautan elektron pi.
+Elektron pi bebas bergerak di sepanjang lembaran, jadi grafit menghantarkan listrik, dan lembarannya mudah bergeser.
+Satu lembar grafit saja disebut grafena, dipisahkan pada tahun dua ribu empat dan diganjar Nobel Fisika dua ribu sepuluh.
+
+[11:53] Bab 16 — Plastik yang menghantarkan listrik
+
+Polietilena, plastik kantong belanja, adalah rantai karbon sp tiga. Semua elektronnya terkunci di ikatan sigma: penyekat.
+Poliasetilena berbeda: rantai karbon sp dua dengan ikatan tunggal dan rangkap berselang-seling, ikatan terkonjugasi.
+Setelah diberi sedikit iodin, elektron pi-nya dapat mengalir, dan plastik itu menghantarkan listrik seperti logam.
+Penemuan ini diganjar Nobel Kimia tahun dua ribu. Polimer penghantar sejenis kini dipakai, misalnya di lapisan layar OLED.
+
+[12:33] Bab 17 — Kegagalan oksigen
+
+Teori ikatan valensi sangat berhasil. Tapi coba satu molekul sederhana: oksigen, O dua.
+Struktur Lewis dan ikatan valensi memberi O sama dengan O: satu sigma, satu pi, dan semua elektron berpasangan.
+Kalau semua berpasangan, oksigen seharusnya tidak tertarik magnet.
+Tapi tuang oksigen cair di antara kutub magnet kuat, dan cairan itu menggantung, menempel di kutub.
+Oksigen paramagnetik: ia punya dua elektron tak berpasangan, keadaan dasarnya triplet.
+Teori ikatan valensi tidak bisa menjelaskannya. Untuk itu kita butuh cara pandang baru: orbital molekul.
+
+[13:20] Bab 18 — Merangkai semuanya
+
+Mari rangkum.
+Ikatan kovalen lahir dari efek pertukaran: elektron menumpuk di antara dua inti.
+Pauli menuntut kedua spin berlawanan. Itulah asal pasangan elektron.
+Ikatan sigma dari tumpang tindih ujung, ikatan pi dari samping.
+Hibrida sp tiga, sp dua, dan sp memberi sudut seratus sembilan koma lima, seratus dua puluh, dan seratus delapan puluh derajat.
+Resonansi menjelaskan benzena, dan hibridisasi menjelaskan intan, grafit, dan plastik penghantar.
+Tapi oksigen yang tertarik magnet menunggu jawaban. Sampai jumpa di video orbital molekul.
