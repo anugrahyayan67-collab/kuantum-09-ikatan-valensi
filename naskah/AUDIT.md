@@ -2,11 +2,11 @@
 
 Sumber: Levine *Quantum Chemistry* ed. 7 (bab 13), Atkins & de Paula *Physical Chemistry*, CRC Handbook, NIST CCCBDB, makalah asli.
 
-| Adegan | Klaim | Nilai | Sumber |
+| Adegan | Klaim | Nilai · dicek | Sumber |
 |---|---|---|---|
 | hook, curve | Energi ikatan H₂ (entalpi, 298 K) | ≈ 436 kJ/mol | CRC |
-| curve | Jarak kesetimbangan H₂ | R_e = 74,1 pm | NIST CCCBDB |
-| curve | Kedalaman sumur D_e | 4,75 eV (D₀ = 4,48 eV) | Levine; NIST |
+| curve | Jarak kesetimbangan H₂ | R_e = 74,1 pm · ✓ 2 Nov 2026 | NIST WebBook H₂: r_e = 0,74144 Å |
+| curve | Kedalaman sumur D_e | 4,75 eV (D₀ = 4,48 eV) · ✓ 2 Nov 2026 | NIST WebBook H₂: D₀ = 36118,6 cm⁻¹ = 4,478 eV; ω_e = 4401,2 cm⁻¹ → titik nol ≈ 0,27 eV → D_e ≈ 4,75 eV; Levine |
 | lewis | Lewis: ikatan = pasangan elektron bersama | 1916, JACS 38, 762 | Lewis |
 | heitler | Heitler–London: ψ = a(1)b(2) + b(1)a(2) | D_e ≈ 3,14 eV, R_e ≈ 87 pm | Heitler & London 1927; Levine |
 | exchange | Kombinasi simetris menumpukkan kerapatan di antara inti; antisimetris bersimpul → tolak | kualitatif | Levine; Atkins |
