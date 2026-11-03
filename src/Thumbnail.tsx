@@ -79,7 +79,7 @@ const Cover: React.FC = () => (
     </Stage>
     <div style={{position: 'absolute', left: 1080, top: 150, width: 700, textAlign: 'center', fontFamily: FONT.serif, color: C.gold, textShadow: '0 0 40px rgba(255,194,74,0.5)'}}>
       <span style={{fontSize: 260, fontStyle: 'italic'}}>sp</span>
-      <span style={{fontSize: 130, verticalAlign: 'super'}}>3</span>
+      <span style={{fontSize: 130, position: 'relative', top: -110}}>3</span>
     </div>
     <div style={{position: 'absolute', left: 110, top: 220, width: 900}}>
       <div style={{fontFamily: FONT.mono, fontSize: 30, letterSpacing: 8, color: C.gold}}>KIMIA KUANTUM · IKATAN VALENSI</div>
